@@ -1,0 +1,136 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Player/dummy_spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Interactable.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Resources/InteractResource.gd" type="Script" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+height = 60.0
+
+[sub_resource type="Animation" id=16]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "runBack"
+length = 0.32
+loop = true
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 3, 5, 3 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "runFront"
+length = 0.32
+loop = true
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 0, 2, 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 4 )
+command = "Hey, dummy."
+dialog = "...
+
+Who you calling a dummy?"
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 4 )
+command = "Who else."
+dialog = "You talkin' to me? You talkin' to ME?
+
+Well, I'm the only one here!"
+
+[node name="Player" type="KinematicBody2D"]
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 4, -97 )
+hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 3, -10 )
+rotation = -1.5708
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "stillFront"
+anims/RESET = SubResource( 16 )
+anims/runBack = SubResource( 2 )
+anims/runFront = SubResource( 3 )
+anims/stillBack = SubResource( 4 )
+anims/stillFront = SubResource( 5 )
+
+[node name="PlayerInteractable" type="Area2D" parent="."]
+script = ExtResource( 3 )
+interactDialog = [ SubResource( 6 ), SubResource( 7 ) ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerInteractable"]
+visible = false
+polygon = PoolVector2Array( -19, -5, -31, -12, -31, -16, -25, -19, -22, -34, -26, -58, -41, -63, -39, -86, -35, -103, -30, -113, -38, -129, -38, -154, -29, -171, -18, -182, 7, -191, 34, -191, 60, -180, 74, -162, 77, -134, 68, -113, 54, -101, 38, -95, 38, -58, 21, -55, 22, -33, 19, -20, 38, -16, 43, -12, 43, -6, 40, -5, 20, -7, 9, -14, 9, -18, 16, -21, 18, -36, 15, -54, 1, -53, -19, -56, -18, -30, -22, -18, -2, -14, 3, -10, 3, -4, 0, -3 )

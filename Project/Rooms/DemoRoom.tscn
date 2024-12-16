@@ -1,0 +1,128 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Kernelsprite/Kernelsprite.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Rooms/DemoRoom/room.png" type="Texture" id=3]
+[ext_resource path="res://Rooms/DemoRoom/side_door.png" type="Texture" id=4]
+[ext_resource path="res://Rooms/DemoRoom/door.png" type="Texture" id=5]
+[ext_resource path="res://Rooms/DemoRoom/Pgo.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/Interactable.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Resources/InteractResource.gd" type="Script" id=8]
+[ext_resource path="res://Rooms/DemoRoom/side_window.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/Resources/InteractResourceExtra.gd" type="Script" id=10]
+[ext_resource path="res://Rooms/DemoRoom/window_zoom.png" type="Texture" id=11]
+[ext_resource path="res://Scripts/Room.gd" type="Script" id=12]
+[ext_resource path="res://Audio/Performer_not_given_-_Piano_solo--march_160_rpm.mp3" type="AudioStream" id=13]
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 10 )
+command = "Go west."
+dialog = ""
+warpScene = "res://Rooms/DemoComputerRoom.tscn"
+warpPos = "FromDemoRoomPos"
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 8 )
+command = "Go north."
+dialog = "The door is locked."
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 92.5, 191 )
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 10 )
+command = "Look out the window."
+dialog = ""
+warpScene = ""
+warpPos = ""
+zoomImage = ExtResource( 11 )
+
+[node name="DemoRoom" type="Node2D"]
+script = ExtResource( 12 )
+bgmTrack = ExtResource( 13 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 379, -28 )
+texture = ExtResource( 3 )
+
+[node name="SideDoor" type="Sprite" parent="Background"]
+position = Vector2( 794, 197 )
+texture = ExtResource( 4 )
+flip_h = true
+
+[node name="Interactable" type="Area2D" parent="Background/SideDoor"]
+script = ExtResource( 7 )
+interactDialog = [ SubResource( 7 ) ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/SideDoor/Interactable"]
+polygon = PoolVector2Array( 56, -177, -57, -250, -57, 133, 56, 258 )
+
+[node name="Door" type="Sprite" parent="Background"]
+position = Vector2( 12, 32 )
+texture = ExtResource( 5 )
+
+[node name="Interactable" type="Area2D" parent="Background/Door"]
+script = ExtResource( 7 )
+interactDialog = [ SubResource( 5 ) ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Door/Interactable"]
+position = Vector2( -0.5, 0 )
+shape = SubResource( 4 )
+
+[node name="SideWindow" type="Sprite" parent="Background"]
+position = Vector2( -732, 104 )
+texture = ExtResource( 9 )
+
+[node name="Interactable" type="Area2D" parent="Background/SideWindow"]
+script = ExtResource( 7 )
+interactDialog = [ SubResource( 6 ) ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/SideWindow/Interactable"]
+polygon = PoolVector2Array( 48, 63, 55, 64, 55, 98, -32, 173, -55, 173, -55, 128, -42, 120, -41, -173, 48, -172 )
+
+[node name="RoomBoundary" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomBoundary"]
+polygon = PoolVector2Array( -498, 457, -264, 195, 1022, 195, 1255, 457, -497, 457, -506, 490, 1314, 502, 1312, 456, 1026, 157, -264, 164, -509, 457 )
+
+[node name="PGO3" parent="." instance=ExtResource( 6 )]
+position = Vector2( -130, 312 )
+
+[node name="PGO2" parent="." instance=ExtResource( 6 )]
+position = Vector2( -240, 387 )
+
+[node name="PGO1" parent="." instance=ExtResource( 6 )]
+position = Vector2( -38, 430 )
+
+[node name="Kernelsprite" parent="." instance=ExtResource( 2 )]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 317, 329 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+position = Vector2( 9, -146 )
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 326, 183 )
+current = true
+process_mode = 0
+limit_left = -506
+limit_top = -5125
+limit_right = 1263
+limit_bottom = 457
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+drag_margin_left = 0.1
+drag_margin_top = 0.0
+drag_margin_right = 0.1
+drag_margin_bottom = 0.05
+editor_draw_limits = true
+
+[node name="FromComputerRoomPos" type="Position2D" parent="."]
+position = Vector2( 1068, 362 )
+__meta__ = {
+"_gizmo_extents_": 30.0
+}

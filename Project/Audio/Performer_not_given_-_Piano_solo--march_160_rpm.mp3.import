@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Performer_not_given_-_Piano_solo--march_160_rpm.mp3-891df2d9178d47f8113a127460764e59.mp3str"
+
+[deps]
+
+source_file="res://Audio/Performer_not_given_-_Piano_solo--march_160_rpm.mp3"
+dest_files=[ "res://.import/Performer_not_given_-_Piano_solo--march_160_rpm.mp3-891df2d9178d47f8113a127460764e59.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

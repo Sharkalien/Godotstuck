@@ -1,0 +1,255 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Rooms/DemoRoom/room.png" type="Texture" id=1]
+[ext_resource path="res://Rooms/DemoRoom/side_door.png" type="Texture" id=2]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Room.gd" type="Script" id=4]
+[ext_resource path="res://Audio/Performer_not_given_-_Piano_solo--march_160_rpm.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Rooms/DemoRoom/gramophone.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/Interactable.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Resources/InteractResource.gd" type="Script" id=8]
+[ext_resource path="res://Rooms/DemoRoom/GramophoneExtraFunc.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/Resources/InteractResourceExtra.gd" type="Script" id=10]
+[ext_resource path="res://Rooms/DemoRoom/computer.png" type="Texture" id=11]
+[ext_resource path="res://Rooms/DemoRoom/computer_zoom.png" type="Texture" id=12]
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 10 )
+command = "Go west."
+dialog = ""
+warpScene = "res://Rooms/DemoRoom.tscn"
+warpPos = "FromComputerRoomPos"
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 8 )
+command = "Turn this shit off."
+dialog = "It somehow started to play on its own..."
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 10 )
+command = "Use the computer."
+dialog = "You begin to eavesdrop on someone's IM conversation.
+{QUEUE_TEXT}
+[color=#c08000]bloodninja: Baby, I been havin a tough night so treat me nice aight?[/color]
+{QUEUE_TEXT}
+[color=#ff0069]BritneySpears14: Aight.[/color]
+{QUEUE_TEXT}
+[color=#c08000]bloodninja: Slip out of those pants baby, yeah.[/color]
+{QUEUE_TEXT}
+[color=#ff0069]BritneySpears14: I slip out of my pants, just for you, bloodninja.[/color]
+{QUEUE_TEXT}
+[color=#c08000]bloodninja: Oh yeah, aight. Aight, I put on my robe and wizard hat.[/color]
+{QUEUE_TEXT}
+[color=#ff0069]BritneySpears14: Oh, I like to play dress up.[/color]
+{QUEUE_TEXT}
+[color=#c08000]bloodninja: Me too baby.[/color]
+{QUEUE_TEXT}
+[color=#ff0069]BritneySpears14: I kiss you softly on your chest.[/color]
+{QUEUE_TEXT}
+[color=#c08000]bloodninja: I cast Lvl. 3 Eroticism. You turn into a real beautiful woman.[/color]
+{QUEUE_TEXT}
+[color=#ff0069]BritneySpears14: Hey...[/color]
+{QUEUE_TEXT}
+[color=#c08000]bloodninja: I meditate to regain my mana, before casting Lvl. 8 chicken of the Infinite.[/color]
+{QUEUE_TEXT}
+[color=#ff0069]BritneySpears14: Funny I still don't see it.[/color]
+{QUEUE_TEXT}
+[color=#c08000]bloodninja: I spend my mana reserves to cast Mighty F*ck of the Beyondness.[/color]
+{QUEUE_TEXT}
+[color=#ff0069]BritneySpears14: You are the worst cyber partner ever. This is ridiculous.[/color]
+{QUEUE_TEXT}
+[color=#c08000]bloodninja: Don't f*ck with me bitch, I'm the mightiest sorcerer of the lands.[/color]
+{QUEUE_TEXT}
+[color=#c08000]bloodninja: I steal yo soul and cast Lightning Lvl. 1,000,000 Your body explodes into a fine bloody mist, because you are only a Lvl. 2 Druid.[/color]
+{QUEUE_TEXT}
+You decide to stop reading."
+warpScene = ""
+warpPos = ""
+zoomImage = ExtResource( 12 )
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 10 )
+command = "Read another chatlog."
+dialog = "heehee, hi [img]res://Rooms/DemoRoom/pc_joyous.png[/img]
+durrrrrr [img]res://Rooms/DemoRoom/pc_silly.png[/img]
+[center][img]res://Rooms/DemoRoom/pc_silly.png[/img][/center]"
+warpScene = ""
+warpPos = ""
+zoomImage = ExtResource( 12 )
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0, 0.826733 )
+colors = PoolColorArray( 0, 0, 0, 0.92549, 0, 0, 0, 0.588235 )
+
+[sub_resource type="GradientTexture2D" id=8]
+flags = 5
+gradient = SubResource( 7 )
+width = 16
+height = 16
+
+[sub_resource type="CanvasItemMaterial" id=3]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.842105 )
+colors = PoolColorArray( 1, 1, 1, 0, 0.815686, 0.815686, 0.815686, 0.635294 )
+
+[sub_resource type="GradientTexture2D" id=5]
+gradient = SubResource( 4 )
+width = 16
+height = 16
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "light flicker"
+length = 0.2
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.95 ) ]
+}
+
+[node name="DemoComputerRoom" type="Node2D"]
+script = ExtResource( 4 )
+bgmTrack = ExtResource( 5 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 325, -603 )
+texture = ExtResource( 1 )
+offset = Vector2( 54, 575 )
+
+[node name="SideDoor" type="Sprite" parent="Background"]
+position = Vector2( -740, 771 )
+texture = ExtResource( 2 )
+
+[node name="Interactable" type="Area2D" parent="Background/SideDoor"]
+script = ExtResource( 7 )
+interactDialog = [ SubResource( 2 ) ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/SideDoor/Interactable"]
+polygon = PoolVector2Array( 56, -249, -57, -177, -57, 259, 56, 132 )
+
+[node name="RoomBoundary" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomBoundary"]
+polygon = PoolVector2Array( -498, 457, -264, 195, 1022, 195, 1255, 457, -497, 457, -506, 490, 1314, 502, 1312, 456, 1026, 157, -264, 164, -509, 457 )
+
+[node name="Gramophone" type="StaticBody2D" parent="."]
+position = Vector2( 926, 211 )
+
+[node name="Sprite" type="Sprite" parent="Gramophone"]
+position = Vector2( 0, -82 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+flip_h = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Gramophone"]
+visible = false
+position = Vector2( 0, -3 )
+polygon = PoolVector2Array( -74, 19, 54, 31, 94, 7, 93, -2, -36, -16 )
+
+[node name="Interactable" type="Area2D" parent="Gramophone"]
+script = ExtResource( 7 )
+interactDialog = [ SubResource( 1 ) ]
+extraFunc = NodePath("GramophoneExtraFunc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Gramophone/Interactable"]
+position = Vector2( 0, -3 )
+polygon = PoolVector2Array( -74, 19, 54, 31, 94, 7, 93, -2, 72.3035, -4.24613, 72, -37, 77, -47, 50.1068, -49.3499, 43, -56, 38, -97, 8, -115, 14, -141, 6, -170, -7, -186, -37, -191, -69, -174, -90, -141, -96, -109, -92, -89, -80, -67, -59, -56, -26, -63, 3, -93, 22, -83, 22, -59, 4.07083, -57.8794, -26, -56, -62, -35, -52, -26, -52.3822, -0.911095 )
+
+[node name="GramophoneExtraFunc" type="Node" parent="Gramophone/Interactable"]
+script = ExtResource( 9 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( -328, 374 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+position = Vector2( 9, -146 )
+remote_path = NodePath("../../Camera2D")
+
+[node name="Computer" type="StaticBody2D" parent="."]
+position = Vector2( 1002, 327 )
+
+[node name="Sprite" type="Sprite" parent="Computer"]
+position = Vector2( 0, -12 )
+texture = ExtResource( 11 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Computer"]
+position = Vector2( 0, -12 )
+polygon = PoolVector2Array( -128, 23, -20, 144, 56, 111, 127, 25, 122, -9, 60, -42 )
+
+[node name="Interactable" type="Area2D" parent="Computer"]
+position = Vector2( 0, -12 )
+script = ExtResource( 7 )
+interactDialog = [ SubResource( 6 ), SubResource( 11 ) ]
+multiCommand = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Computer/Interactable"]
+polygon = PoolVector2Array( 14.5, -128.9, 25.9, -124.5, 63, -129, 94.5, -117.6, 119.5, -103.7, 108, -33, 98, -29, 96, -14, 111, -12, 122.5, -4.3, 121, 11, 109, 25, 114, 31, 114, 42, 106, 48, 91.6, 54.5, 56, 62, 48, 69, 49, 75, 56, 87, 56, 99, 49, 107.5, 36, 110, 24, 110, 24, 121, -3.1, 137.5, -17.5, 137.5, -27, 127, -25, 111, -37, 116, -45.5, 115.4, -122.5, 32.3, -123, 22, -80, 4, -71, 4, -58, 16, -56.3, -12.5, -45, -16, -57, -31, -57.5, -121.6, -56, -136, -31.3, -137.5 )
+
+[node name="Darkness" type="Polygon2D" parent="."]
+position = Vector2( 331, 815 )
+offset = Vector2( -331, -815 )
+texture = SubResource( 8 )
+polygon = PoolVector2Array( -779, 713, 1641, 709, 1649, -956, -783, -963 )
+uv = PoolVector2Array( 0.0793743, 16.0388, 16.0169, 15.9763, 16.0794, -0.0236874, 0, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -319, 228 )
+current = true
+process_mode = 0
+limit_left = -506
+limit_top = -5125
+limit_right = 1263
+limit_bottom = 457
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+drag_margin_left = 0.1
+drag_margin_top = 0.0
+drag_margin_right = 0.1
+drag_margin_bottom = 0.05
+editor_draw_limits = true
+
+[node name="FromDemoRoomPos" type="Position2D" parent="."]
+position = Vector2( -328, 374 )
+__meta__ = {
+"_gizmo_extents_": 30.0
+}
+
+[node name="ComputerLight" type="Polygon2D" parent="."]
+material = SubResource( 3 )
+position = Vector2( 1366, 994 )
+offset = Vector2( -795, -922 )
+texture = SubResource( 5 )
+polygon = PoolVector2Array( 79, -37, 446, 164, 441, 244, 93, 441 )
+uv = PoolVector2Array( 0, 0, 16.0169, 0.0388126, 16.0169, 15.9138, -0.0456257, 15.8513 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ComputerLight"]
+autoplay = "light flicker"
+anims/RESET = SubResource( 9 )
+"anims/light flicker" = SubResource( 10 )
