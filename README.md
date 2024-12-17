@@ -7,6 +7,7 @@
 - Interaction system
 - Queueable dialog
 - BBCode support
+- Multicommand support
 - Mobile support
 - Dynamic UI layout
 - Camera hotspots (areas that snap the camera to a specific point)
