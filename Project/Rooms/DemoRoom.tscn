@@ -16,7 +16,7 @@
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 10 )
-command = "Go west."
+command = "Go east."
 dialog = ""
 warpScene = "res://Rooms/DemoComputerRoom.tscn"
 warpPos = "FromDemoRoomPos"
@@ -37,7 +37,7 @@ warpScene = ""
 warpPos = ""
 zoomImage = ExtResource( 11 )
 
-[node name="DemoRoom" type="Node2D"]
+[node name="DemoRoom" type="YSort"]
 script = ExtResource( 12 )
 bgmTrack = ExtResource( 13 )
 

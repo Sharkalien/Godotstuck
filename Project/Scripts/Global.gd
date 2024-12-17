@@ -29,8 +29,6 @@ func _ready():
 
 
 func init_nodes():
-	var currentSceneCanvasItem = currentScene.get_canvas_item()
-	VisualServer.canvas_item_set_sort_children_by_y(currentSceneCanvasItem,true)
 	if "bgmTrack" in currentScene && audioNode.stream == currentScene.bgmTrack:
 		pass
 	elif "bgmTrack" in currentScene && audioNode.stream != currentScene.bgmTrack:
