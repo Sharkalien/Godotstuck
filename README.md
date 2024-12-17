@@ -14,6 +14,12 @@
 - Background audio system
 - and more!
 
+## How to use
+Check the [wiki](https://github.com/Sharkalien/Godotstuck/wiki) for instructions on how to start setting up room scenes and customizing the player (wiki is currently a W.I.P.)
+
+## Demo
+Try out the Homestuck Act 2 flash port that was made using this project [here](https://sharkalien.github.io/Godot-YOU-THERE.-BOY.-Walkaround/)!
+
 ## Credits
 - A huge thank you to [Axollyon](https://github.com/axollyon) for contributing to the [initial project](https://github.com/Sharkalien/Godot-YOU-THERE.-BOY.-Walkaround)!
 - Art by Andrew Hussie
