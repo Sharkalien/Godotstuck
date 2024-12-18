@@ -19,6 +19,7 @@ command = "Go west."
 dialog = ""
 warpScene = "res://Rooms/DemoRoom.tscn"
 warpPos = "FromComputerRoomPos"
+extraFunc = ""
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 8 )
@@ -66,6 +67,7 @@ You decide to stop reading."
 warpScene = ""
 warpPos = ""
 zoomImage = ExtResource( 12 )
+extraFunc = ""
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 10 )
@@ -76,6 +78,7 @@ durrrrrr [img]res://Rooms/DemoRoom/pc_silly.png[/img]
 warpScene = ""
 warpPos = ""
 zoomImage = ExtResource( 12 )
+extraFunc = ""
 
 [sub_resource type="Gradient" id=7]
 offsets = PoolRealArray( 0, 0.826733 )

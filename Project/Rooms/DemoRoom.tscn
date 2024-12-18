@@ -20,6 +20,7 @@ command = "Go east."
 dialog = ""
 warpScene = "res://Rooms/DemoComputerRoom.tscn"
 warpPos = "FromDemoRoomPos"
+extraFunc = ""
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 8 )
@@ -36,6 +37,7 @@ dialog = ""
 warpScene = ""
 warpPos = ""
 zoomImage = ExtResource( 11 )
+extraFunc = ""
 
 [node name="DemoRoom" type="YSort"]
 script = ExtResource( 12 )
