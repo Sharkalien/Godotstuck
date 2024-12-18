@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Rooms/DemoRoom/room.png" type="Texture" id=1]
 [ext_resource path="res://Rooms/DemoRoom/side_door.png" type="Texture" id=2]
@@ -12,6 +12,9 @@
 [ext_resource path="res://Scripts/Resources/InteractResourceExtra.gd" type="Script" id=10]
 [ext_resource path="res://Rooms/DemoRoom/computer.png" type="Texture" id=11]
 [ext_resource path="res://Rooms/DemoRoom/computer_zoom.png" type="Texture" id=12]
+[ext_resource path="res://Rooms/DemoRoom/NotifBubbleInteractable.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Rooms/DemoRoom/light_switch.png" type="Texture" id=14]
+[ext_resource path="res://Rooms/LightExtraFunc.gd" type="Script" id=15]
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 10 )
@@ -20,6 +23,11 @@ dialog = ""
 warpScene = "res://Rooms/DemoRoom.tscn"
 warpPos = "FromComputerRoomPos"
 extraFunc = ""
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 8 )
+command = "Turn this shit on."
+dialog = "Something shut off the lights..."
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 8 )
@@ -155,6 +163,32 @@ interactDialog = [ SubResource( 2 ) ]
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/SideDoor/Interactable"]
 polygon = PoolVector2Array( 56, -249, -57, -177, -57, 259, 56, 132 )
 
+[node name="NotifBubbleInteractable" parent="Background" instance=ExtResource( 13 )]
+position = Vector2( -317, 694 )
+
+[node name="NotifBubbleInteractable2" parent="Background" instance=ExtResource( 13 )]
+position = Vector2( -21, 694 )
+
+[node name="NotifBubbleInteractable3" parent="Background" instance=ExtResource( 13 )]
+position = Vector2( 280, 694 )
+
+[node name="LightSwitch" type="Sprite" parent="Background"]
+position = Vector2( 809, 752 )
+texture = ExtResource( 14 )
+
+[node name="Interactable" type="Area2D" parent="Background/LightSwitch"]
+script = ExtResource( 7 )
+interactDialog = [ SubResource( 12 ) ]
+extraFunc = NodePath("LightExtraFunc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/LightSwitch/Interactable"]
+polygon = PoolVector2Array( -10, -29, 11, -22, 11, 30, -11, 19 )
+
+[node name="LightExtraFunc" type="Node" parent="Background/LightSwitch/Interactable"]
+script = ExtResource( 15 )
+darkness = NodePath("../../../../Darkness")
+computer_light = NodePath("../../../../ComputerLight")
+
 [node name="RoomBoundary" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomBoundary"]
@@ -232,6 +266,7 @@ limit_smoothed = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = true
+smoothing_speed = 3.0
 drag_margin_left = 0.1
 drag_margin_top = 0.0
 drag_margin_right = 0.1

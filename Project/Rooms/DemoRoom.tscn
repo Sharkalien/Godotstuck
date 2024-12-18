@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Kernelsprite/Kernelsprite.tscn" type="PackedScene" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Rooms/DemoRoom/window_zoom.png" type="Texture" id=11]
 [ext_resource path="res://Scripts/Room.gd" type="Script" id=12]
 [ext_resource path="res://Audio/Performer_not_given_-_Piano_solo--march_160_rpm.mp3" type="AudioStream" id=13]
+[ext_resource path="res://Rooms/DemoRoom/NotifBubbleInteractable.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scripts/CameraHotspot.gd" type="Script" id=15]
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 10 )
@@ -38,6 +40,11 @@ warpScene = ""
 warpPos = ""
 zoomImage = ExtResource( 11 )
 extraFunc = ""
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 8 )
+command = "Explain camera hotspots."
+dialog = "Camera hotspots are areas where the camera will snap to a specific point in space when you walk into them."
 
 [node name="DemoRoom" type="YSort"]
 script = ExtResource( 12 )
@@ -82,10 +89,27 @@ interactDialog = [ SubResource( 6 ) ]
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/SideWindow/Interactable"]
 polygon = PoolVector2Array( 48, 63, 55, 64, 55, 98, -32, 173, -55, 173, -55, 128, -42, 120, -41, -173, 48, -172 )
 
+[node name="NotifBubbleInteractable" parent="Background" instance=ExtResource( 14 )]
+position = Vector2( 578, -146 )
+interactDialog = [ SubResource( 8 ) ]
+
+[node name="Position2D" type="Position2D" parent="Background/NotifBubbleInteractable"]
+__meta__ = {
+"_gizmo_extents_": 25.0
+}
+
 [node name="RoomBoundary" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomBoundary"]
 polygon = PoolVector2Array( -498, 457, -264, 195, 1022, 195, 1255, 457, -497, 457, -506, 490, 1314, 502, 1312, 456, 1026, 157, -264, 164, -509, 457 )
+
+[node name="CameraHotspot" type="Area2D" parent="."]
+position = Vector2( 943, 228 )
+script = ExtResource( 15 )
+snapTo = NodePath("../Background/NotifBubbleInteractable/Position2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CameraHotspot"]
+polygon = PoolVector2Array( 78, -34, 143, 40, -139, 40, -158, -34 )
 
 [node name="PGO3" parent="." instance=ExtResource( 6 )]
 position = Vector2( -130, 312 )
@@ -117,6 +141,7 @@ limit_smoothed = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = true
+smoothing_speed = 3.0
 drag_margin_left = 0.1
 drag_margin_top = 0.0
 drag_margin_right = 0.1
