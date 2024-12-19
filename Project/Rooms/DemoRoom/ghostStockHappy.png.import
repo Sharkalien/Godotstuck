@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pc_silly.png-2b9f058aaf17a5392f7f4a1cfa71b4bb.stex"
+path="res://.import/ghostStockHappy.png-bd15c04b498c025376b2f426c9dc0c20.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Rooms/DemoRoom/pc_silly.png"
-dest_files=[ "res://.import/pc_silly.png-2b9f058aaf17a5392f7f4a1cfa71b4bb.stex" ]
+source_file="res://Rooms/DemoRoom/ghostStockHappy.png"
+dest_files=[ "res://.import/ghostStockHappy.png-bd15c04b498c025376b2f426c9dc0c20.stex" ]
 
 [params]
 
