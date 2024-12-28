@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Rooms/DemoRoom/room.png" type="Texture" id=1]
 [ext_resource path="res://Rooms/DemoRoom/side_door.png" type="Texture" id=2]
@@ -24,6 +24,35 @@ dialog = ""
 warpScene = "res://Rooms/DemoRoom.tscn"
 warpPos = "FromComputerRoomPos"
 extraFunc = ""
+
+[sub_resource type="Resource" id=14]
+script = ExtResource( 8 )
+command = "BBCode examples."
+dialog = "You can use BBCode tags much like the ones on MSPFA, such as color and url. [url=https://docs.godotengine.org/en/3.5/tutorials/ui/bbcode_in_richtextlabel.html#reference]Here's[/url] a complete list of supported tags.
+
+There are also some cool animation effects you can use.
+{QUEUE_TEXT}
+[wave amp=50 freq=5]Like making text waaaaaavyyyyyyy.[/wave]
+{QUEUE_TEXT}
+[tornado radius=3 freq=7]Spinning letters around in a circle.[/tornado]
+{QUEUE_TEXT}
+[shake rate=8 level=6]Sh-sh-shaking text around...[/shake]
+{QUEUE_TEXT}
+[fade start=1 length=19]Fading it awaaaaaaay.[/fade]
+{QUEUE_TEXT}
+[rainbow freq=0.4 sat=1 val=1]Or making it a rainbow. Yoo-hooooo![/rainbow]"
+
+[sub_resource type="Resource" id=15]
+script = ExtResource( 8 )
+command = "Executing custom code on clicked commands."
+dialog = "You can run custom code to do more advanced things, like the kernelsprite's speech bubble playing every time any one of its commands are clicked, or have code tied to one specific command.
+
+Up ahead are some examples of what you can do with this feature."
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 8 )
+command = "..."
+dialog = "Don't turn around."
 
 [sub_resource type="Resource" id=12]
 script = ExtResource( 8 )
@@ -176,13 +205,16 @@ interactDialog = [ SubResource( 2 ) ]
 polygon = PoolVector2Array( 56, -249, -57, -177, -57, 259, 56, 132 )
 
 [node name="NotifBubbleInteractable" parent="Background" instance=ExtResource( 13 )]
-position = Vector2( -317, 694 )
+position = Vector2( -327, 694 )
+interactDialog = [ SubResource( 14 ) ]
 
 [node name="NotifBubbleInteractable2" parent="Background" instance=ExtResource( 13 )]
 position = Vector2( -21, 694 )
+interactDialog = [ SubResource( 15 ) ]
 
 [node name="NotifBubbleInteractable3" parent="Background" instance=ExtResource( 13 )]
 position = Vector2( 280, 694 )
+interactDialog = [ SubResource( 16 ) ]
 
 [node name="LightSwitch" type="Sprite" parent="Background"]
 position = Vector2( 809, 752 )
@@ -265,6 +297,27 @@ offset = Vector2( -331, -815 )
 texture = SubResource( 8 )
 polygon = PoolVector2Array( -779, 713, 1641, 709, 1649, -956, -783, -963 )
 uv = PoolVector2Array( 0.0793743, 16.0388, 16.0169, 15.9763, 16.0794, -0.0236874, 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ComputerLight" type="Polygon2D" parent="."]
+material = SubResource( 3 )
+position = Vector2( 1366, 994 )
+offset = Vector2( -795, -922 )
+texture = SubResource( 5 )
+polygon = PoolVector2Array( 79, -37, 446, 164, 441, 244, 93, 441 )
+uv = PoolVector2Array( 0, 0, 16.0169, 0.0388126, 16.0169, 15.9138, -0.0456257, 15.8513 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ComputerLight"]
+autoplay = "light flicker"
+anims/RESET = SubResource( 9 )
+"anims/light flicker" = SubResource( 10 )
+
+[node name="pooplordexeExtraFunc" type="Node" parent="ComputerLight"]
+unique_name_in_owner = true
+script = ExtResource( 16 )
+darkness = NodePath("../../Darkness")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -319, 228 )
@@ -290,20 +343,3 @@ position = Vector2( -328, 374 )
 __meta__ = {
 "_gizmo_extents_": 30.0
 }
-
-[node name="ComputerLight" type="Polygon2D" parent="."]
-material = SubResource( 3 )
-position = Vector2( 1366, 994 )
-offset = Vector2( -795, -922 )
-texture = SubResource( 5 )
-polygon = PoolVector2Array( 79, -37, 446, 164, 441, 244, 93, 441 )
-uv = PoolVector2Array( 0, 0, 16.0169, 0.0388126, 16.0169, 15.9138, -0.0456257, 15.8513 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ComputerLight"]
-autoplay = "light flicker"
-anims/RESET = SubResource( 9 )
-"anims/light flicker" = SubResource( 10 )
-
-[node name="pooplordexeExtraFunc" type="Node" parent="ComputerLight"]
-unique_name_in_owner = true
-script = ExtResource( 16 )
