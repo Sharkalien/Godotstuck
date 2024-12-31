@@ -1,5 +1,5 @@
 # Godotstuck
- A base template to make Act 2 Homestuck-style walkarounds in [Godot 3.5](https://godotengine.org/download/archive/3.5-stable/)
+ A base template to make Act 2 Homestuck-style walkarounds in [Godot 3.6](https://godotengine.org/download/archive/3.6-stable/)
 
 ## Features
 - A player controller
