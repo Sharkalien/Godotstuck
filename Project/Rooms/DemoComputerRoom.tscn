@@ -236,7 +236,8 @@ computer_light = NodePath("../../../../ComputerLight")
 [node name="RoomBoundary" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomBoundary"]
-polygon = PoolVector2Array( -498, 457, -264, 195, 1022, 195, 1255, 457, -497, 457, -506, 490, 1314, 502, 1312, 456, 1026, 157, -264, 164, -509, 457 )
+build_mode = 1
+polygon = PoolVector2Array( -265, 194, 1021, 194, 1254, 456, -498, 455 )
 
 [node name="Gramophone" type="StaticBody2D" parent="."]
 position = Vector2( 926, 211 )
@@ -326,7 +327,7 @@ process_mode = 0
 limit_left = -506
 limit_top = -5125
 limit_right = 1263
-limit_bottom = 457
+limit_bottom = 456
 limit_smoothed = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
