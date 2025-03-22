@@ -48,7 +48,7 @@ dialog = "Camera hotspots are areas where the camera will snap to a specific poi
 
 [node name="DemoRoom" type="YSort"]
 script = ExtResource( 12 )
-bgmTrack = ExtResource( 13 )
+backgroundAudio = ExtResource( 13 )
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 379, -28 )
@@ -93,7 +93,7 @@ polygon = PoolVector2Array( 48, 63, 55, 64, 55, 98, -32, 173, -55, 173, -55, 128
 position = Vector2( 578, -146 )
 interactDialog = [ SubResource( 8 ) ]
 
-[node name="Position2D" type="Position2D" parent="Background/NotifBubbleInteractable"]
+[node name="BubblePosition" type="Position2D" parent="Background/NotifBubbleInteractable"]
 __meta__ = {
 "_gizmo_extents_": 25.0
 }
@@ -107,7 +107,7 @@ polygon = PoolVector2Array( -265, 194, 1021, 194, 1254, 456, -498, 455 )
 [node name="CameraHotspot" type="Area2D" parent="."]
 position = Vector2( 943, 228 )
 script = ExtResource( 15 )
-snapTo = NodePath("../Background/NotifBubbleInteractable/Position2D")
+snapTo = NodePath("../Background/NotifBubbleInteractable/BubblePosition")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CameraHotspot"]
 polygon = PoolVector2Array( 78, -34, 143, 40, -139, 40, -158, -34 )

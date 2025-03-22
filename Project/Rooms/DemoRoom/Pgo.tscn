@@ -9,23 +9,26 @@ script = ExtResource( 2 )
 command = "Build a fort out of the green cubes."
 dialog = "There aren't enough cubes to do that!"
 
-[node name="Pgo" type="StaticBody2D"]
+[node name="Pgo" type="Area2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "A perfectly generic object. WARNING: editing its default resource will reflect those changes in all other instances. Don't use this object, it's only an example."
+}
+interactDialog = [ SubResource( 4 ) ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
 position = Vector2( 0, -50 )
 texture = ExtResource( 3 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2( 0, -32 )
 polygon = PoolVector2Array( -56, 20, -49, 31, 8, 48, 19, 47, 54, 1, -24, -21 )
 
-[node name="Interactable" type="Area2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 0, -32 )
-script = ExtResource( 1 )
-interactDialog = [ SubResource( 4 ) ]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Interactable"]
 polygon = PoolVector2Array( -56, 20, -49, 31, 8, 48, 19, 47, 54, 2, 55, -9, 55, -57, 46, -68, -5, -84, -21, -83, -55, -39 )

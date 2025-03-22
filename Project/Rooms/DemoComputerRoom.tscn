@@ -186,7 +186,7 @@ tracks/0/keys = {
 
 [node name="DemoComputerRoom" type="YSort"]
 script = ExtResource( 4 )
-bgmTrack = ExtResource( 5 )
+backgroundAudio = ExtResource( 5 )
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 325, -603 )

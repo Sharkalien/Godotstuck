@@ -4,9 +4,9 @@ signal command_clicked
 
 var command:String
 var dialog:String = """"""
-var warpScene
-var warpPos = ""
-var zoomImage
+var warpScene:String
+var warpPos:String = ""
+var zoomImage:Texture
 var extraFunc
 
 var timer:int = 2 # to make "> " visible first

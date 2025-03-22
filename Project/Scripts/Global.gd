@@ -22,24 +22,27 @@ func _ready():
 	tweenNode.connect("tween_completed", self, "_on_tween_completed")
 	
 	currentScene = get_tree().current_scene
-	init_nodes()
+	init_audio()
 	
 	if !OS.has_feature("editor"):
 		print(Engine.get_license_text()) # to comply with godot's license terms
 
 
-func init_nodes():
-	if "bgmTrack" in currentScene && audioNode.stream == currentScene.bgmTrack:
+func init_audio():
+	# If an audio track exists in the current room and the audio player is already set with the same track, do nothing
+	if "backgroundAudio" in currentScene && audioNode.stream == currentScene.backgroundAudio:
 		pass
-	elif "bgmTrack" in currentScene && audioNode.stream != currentScene.bgmTrack:
-		audioNode.stream = currentScene.bgmTrack
+	# If there's a new track, play that instead
+	elif "backgroundAudio" in currentScene && audioNode.stream != currentScene.backgroundAudio:
+		audioNode.stream = currentScene.backgroundAudio
 		audioNode.play()
+	# If no track is set, stop the player and set the stream to null to avoid bugs
 	else:
 		audioNode.stop()
 		audioNode.stream = null
 
 
-func fadeto_scene(path, pos):
+func fadeto_scene(path:String, pos:String):
 	Ui.fading = true
 	fadeScene = path
 	posPath = pos; assert(pos != "", "warpPos needs the name of a Position2D!")
@@ -76,6 +79,7 @@ func goto_scene(path):
 
 
 func _deferred_goto_scene(path):
+	# Cache the player to later re-add them to the scenetree to persist their state
 	oldPlayer = playerNode
 	currentScene.remove_child(oldPlayer)
 	# It is now safe to remove the current scene
@@ -87,15 +91,15 @@ func _deferred_goto_scene(path):
 	# Instance the new scene.
 	currentScene = s.instance()
 	
+	# The player node in other scenes is effectively a dummy to be replaced with the original
 	var newPlayer = currentScene.get_node("Player")
 	currentScene.add_child_below_node(newPlayer,oldPlayer)
 	var newPlayerRTPos:Vector2 = newPlayer.get_node("RemoteTransform2D").position
 	newPlayer.free()
 	playerNode = oldPlayer
 	
-	# Add it to the active scene, as child of root.
+	# Add the scene instance to the active scene, as child of root.
 	get_tree().get_root().add_child(currentScene)
-	
 	get_tree().set_current_scene(currentScene)
 	
 	# Get and set the path of the Position2D node in the scene to warp to
@@ -113,4 +117,4 @@ func _deferred_goto_scene(path):
 		cam.global_position = playerRT.global_position
 		cam.reset_smoothing()
 	
-	init_nodes()
+	init_audio()
